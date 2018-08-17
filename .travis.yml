@@ -9,7 +9,7 @@ before_script:
   - cd "${TRAVIS_BUILD_DIR}"
 
 script: 
-  - cd /home/travis/build/pk-otus/05_editor
+  - cd /home/travis/build/pk-otus/06_matrix
   - cmake .
   - cmake --build .
   - cmake --build . --target test
