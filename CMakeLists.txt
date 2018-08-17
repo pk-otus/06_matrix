@@ -6,20 +6,25 @@ else()
    project(matrix VERSION 0.0.1)
 endif()
 
+set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
+
 configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(matrix main.cpp)
+add_executable(matrix ${SRC_DIR}/main.cpp)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_target_properties(matrix PROPERTIES
 		COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+		INCLUDE_DIRECTORIES ${INCLUDE_DIR}
 	)
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	set_target_properties(matrix PROPERTIES
 		COMPILE_OPTIONS -W3 
+		INCLUDE_DIRECTORIES ${INCLUDE_DIR}
 	)
 endif()
 
@@ -35,3 +40,6 @@ set(CPACK_PACKAGE_CONTACT a@a.a)
 
 include (CPack)
 
+enable_testing()
+
+add_subdirectory(test)
