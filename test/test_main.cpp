@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <matrixFunctions.h>
+#include "../include/matrixFunctions.h"
 
 TEST(MatrixTest, MatrixTest)
 {
