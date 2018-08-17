@@ -14,7 +14,9 @@ configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(matrix ${SRC_DIR}/main.cpp)
+file(GLOB_RECURSE HEADER_FILES ${INCLUDE_DIR}/*.h)
+
+add_executable(matrix ${SRC_DIR}/main.cpp ${HEADER_FILES})
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_target_properties(matrix PROPERTIES
