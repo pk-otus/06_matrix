@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "matrix.h"
+#include "../include/matrix.h"
 
 namespace matrix
 {

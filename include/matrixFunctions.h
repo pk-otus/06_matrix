@@ -1,5 +1,5 @@
 #pragma once
-#include "matrixRow.h"
+#include "../include/matrixRow.h"
 
 namespace matrix
 {
