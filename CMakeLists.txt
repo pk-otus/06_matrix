@@ -14,9 +14,10 @@ configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB_RECURSE HEADER_FILES ${INCLUDE_DIR}/*.h)
+file(GLOB HEADER_FILES ${INCLUDE_DIR}/*.h)
+file(GLOB SRC_FILES ${SRC_DIR}/*.cpp)
 
-add_executable(matrix ${SRC_DIR}/main.cpp ${HEADER_FILES})
+add_executable(matrix ${SRC_FILES} ${HEADER_FILES})
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	set_target_properties(matrix PROPERTIES
@@ -32,6 +33,9 @@ endif()
 
 install(TARGETS matrix RUNTIME DESTINATION bin)
 
+enable_testing()
+add_subdirectory(test)
+
 set(CPACK_GENERATOR DEB)
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
@@ -42,6 +46,3 @@ set(CPACK_PACKAGE_CONTACT a@a.a)
 
 include (CPack)
 
-enable_testing()
-
-add_subdirectory(test)
