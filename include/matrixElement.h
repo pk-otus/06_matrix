@@ -1,7 +1,5 @@
 #pragma once
-#include <iostream>
-#include "../include/matrix.h"
-
+#include "matrix.h"
 namespace matrix
 {
 	template <typename T, T DEFAULT_VALUE>
@@ -18,14 +16,7 @@ namespace matrix
 			parent_matrix->SetValue(x, y, val);
 			return *this;
 		}
-
-		bool operator==(const T& val) {	return parent_matrix->GetValue(x, y) == val; }
-
-		friend std::ostream& operator<<(std::ostream& os, const MatrixElement& obj)
-		{
-			std::cout << obj.parent_matrix->GetValue(obj.x, obj.y);
-			return os;
-		}
+		operator T() { return parent_matrix->GetValue(x, y); }
 	private:
 		matrix_type* const parent_matrix;
 		const size_t x;
