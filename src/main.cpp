@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../include/matrixFunctions.h"
+#include "matrixFunctions.h"
 
 int main(int, char *[])
 {
